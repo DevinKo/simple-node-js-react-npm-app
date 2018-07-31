@@ -10,16 +10,17 @@ pipeline {
     stage('Build') {
       steps {
         sh '''docker run \\
-  -u root \\
-  --rm \\
-  -d \\
-  -p 8080:8080 \\
-  -p 50000:50000 \\
-  -v jenkins-data:/var/jenkins_home \\
-  -v /var/run/docker.sock:/var/run/docker.sock \\
-  jenkinsci/blueocean
+Â  -u root \\
+Â  --rm \\
+Â  -d \\
+Â  -p 8080:8080 \\
+Â  -p 50000:50000 \\
+Â  -v jenkins-data:/var/jenkins_home \\
+Â  -v /var/run/docker.sock:/var/run/docker.sock \\
+Â  jenkinsci/blueocean
 '''
         sh 'npm install'
+        sh 'RUN apk add nodejs=6.2.0-r0'
       }
     }
   }
